@@ -49,7 +49,7 @@ func main() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 
-	cursor := time.Now().Add(5 * -time.Minute).UnixMicro()
+	// cursor := time.Now().Add(5 * -time.Minute).UnixMicro()
 
 	// Every 5 seconds print the events read and bytes read and average event size
     var perflogInterval int64 = 15
@@ -99,7 +99,7 @@ func main() {
 		}
 	}()
 
-	if err := c.ConnectAndRead(ctx, &cursor); err != nil {
+	if err := c.ConnectAndRead(ctx, nil/*&cursor*/); err != nil {
 		log.Fatalf("failed to connect: %v", err)
 	}
 
