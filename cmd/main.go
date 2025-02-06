@@ -82,17 +82,18 @@ func main() {
 	}()
 
 	go func() {
-		ticker := time.NewTicker(time.Minute)
+		ticker := time.NewTicker(30*time.Second)
 		for {
 			select {
 			case <-ticker.C:
                 mu.Lock()
-                fmt.Println("\n* * * Events: * * *")
+                fmt.Println("--------------------------------------")
+                fmt.Println("* * * Events: * * *")
                 printMapSorted(&eventTypes)
                 fmt.Println()
                 fmt.Println("* * * Lexicons: * * *")
                 printMapSorted(&lexicons)
-                fmt.Println()
+                fmt.Println("--------------------------------------")
                 mu.Unlock()
 			}
 		}
